@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dari Huda ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffe6ef, #fff5f8, #ffeef4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: #4a3038;
+}
+
+.card {
+    width: 90%;
+    max-width: 420px;
+    background: rgba(255,255,255,0.94);
+    border-radius: 28px;
+    padding: 28px 22px;
+    text-align: center;
+    box-shadow: 0 15px 45px rgba(180, 80, 110, 0.18);
+    position: relative;
+    z-index: 2;
+    animation: muncul .7s ease;
+}
+
+h1 {
+    color: #d94f78;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #d94f78;
+    font-size: 23px;
+}
+
+p {
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+.small {
+    font-size: 13px;
+    color: #9a737d;
+}
+
+button {
+    width: 100%;
+    border: none;
+    border-radius: 18px;
+    padding: 14px;
+    margin-top: 11px;
+    background: #f783a5;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .25s;
+}
+
+button:hover {
+    transform: scale(1.03);
+}
+
+button:active {
+    transform: scale(.97);
+}
+
+.secondary {
+    background: #ffe0e9;
+    color: #c94c72;
+}
+
+.hidden {
+    display: none;
+}
+
+.heart {
+    position: fixed;
+    bottom: -30px;
+    font-size: 22px;
+    animation: naik 5s linear forwards;
+    z-index: 1;
+    pointer-events: none;
+}
+
+@keyframes naik {
+    from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes muncul {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.progress {
+    height: 7px;
+    background: #f8dce5;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #ed7196;
+    transition: .5s;
+}
+
+.signature {
+    margin-top: 25px;
+    font-weight: bold;
+    color: #d94f78;
+}
+
+.big-heart {
+    font-size: 65px;
+    animation: denyut 1s infinite;
+}
+
+@keyframes denyut {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <!-- HALAMAN 1 -->
+    <div id="page1">
+        <div class="big-heart">❤️</div>
+
+        <h1>Hai kamu...</h1>
+
+        <p>
+            Sebentar boleh?
+            <br>
+            <b>Huda mau nanya sesuatu.</b>
+        </p>
+
+        <p class="small">
+            Tenang, cuma sebentar kok... 🤭
+        </p>
+
+        <button onclick="nextPage(2)">
+            Mulai ❤️
+        </button>
+    </div>
+
+
+    <!-- HALAMAN 2 -->
+    <div id="page2" class="hidden">
+
+        <div class="progress">
+            <div class="progress-bar" id="bar"></div>
+        </div>
+
+        <h2>🌤️ Hari ini gimana?</h2>
+
+        <p>
+            Kuliahnya hari ini gimana?
+        </p>
+
+        <button onclick="jawab(3)">
+            😊 Seru banget
+        </button>
+
+        <button onclick="jawab(3)">
+            😐 Biasa aja
+        </button>
+
+        <button onclick="jawab(3)">
+            😮‍💨 Lumayan melelahkan
+        </button>
+
+        <button onclick="jawab(3)">
+            🥺 Capek banget
+        </button>
+    </div>
+
+
+    <!-- HALAMAN 3 -->
+    <div id="page3" class="hidden">
+
+        <div class="progress">
+            <div class="progress-bar" style="width:40%"></div>
+        </div>
+
+        <h2>🍚 Terus...</h2>
+
+        <p>
+            Kamu hari ini udah makan belum?
+        </p>
+
+        <button onclick="jawab(4)">
+            🍚 Udah
+        </button>
+
+        <button onclick="jawab(4)">
+            😭 Belum
+        </button>
+
+        <button onclick="jawab(4)">
+            🤭 Belum sempat
+        </button>
+    </div>
+
+
+    <!-- HALAMAN 4 -->
+    <div id="page4" class="hidden">
+
+        <div class="progress">
+            <div class="progress-bar" style="width:60%"></div>
+        </div>
+
+        <h2>🫶 Huda cuma mau bilang...</h2>
+
+        <p>
+            Kalau hari ini terasa berat,
+            jangan terlalu keras sama diri sendiri ya.
+        </p>
+
+        <p>
+            Kamu boleh capek.
+            <br>
+            Kamu boleh istirahat.
+            <br>
+            Dan kalau mau cerita...
+            <br>
+            <b>Huda dengerin.</b> ❤️
+        </p>
+
+        <button onclick="nextPage(5)">
+            Lanjut 🤍
+        </button>
+    </div>
+
+
+    <!-- HALAMAN 5 -->
+    <div id="page5" class="hidden">
+
+        <div class="progress">
+            <div class="progress-bar" style="width:75%"></div>
+        </div>
+
+        <h2>💭 Oh iya...</h2>
+
+        <p>
+            Ada satu hal lagi yang mau Huda bilang.
+        </p>
+
+        <p>
+            Kalau suatu hari kamu kangen Huda...
+        </p>
+
+        <h2>
+            bilang ya. 🥺
+        </h2>
+
+        <p>
+            Jangan dipendem sendiri.
+            <br>
+            Jangan pura-pura nggak kangen.
+        </p>
+
+        <button onclick="nextPage(6)">
+            Kalau kangen bilang ❤️
+        </button>
+    </div>
+
+
+    <!-- HALAMAN 6 -->
+    <div id="page6" class="hidden">
+
+        <div class="progress">
+            <div class="progress-bar" style="width:90%"></div>
+        </div>
+
+        <h2>🤍 Janji?</h2>
+
+        <p>
+            Kalau kangen...
+            <br>
+            bilang Huda ya?
+        </p>
+
+        <button onclick="nextPage(7)">
+            Janji 🤞
+        </button>
+
+        <button class="secondary" onclick="nextPage(7)">
+            Iya deh 🥺
+        </button>
+    </div>
+
+
+    <!-- HALAMAN 7 -->
+    <div id="page7" class="hidden">
+
+        <div class="big-heart">💗</div>
+
+        <h2>Sebenarnya...</h2>
+
+        <p>
+            Huda nggak punya pertanyaan lagi.
+        </p>
+
+        <p>
+            Huda cuma mau bilang sesuatu.
+        </p>
+
+        <p>
+            Makasih ya...
+            <br>
+            udah hadir di hari-hari Huda.
+        </p>
+
+        <button onclick="nextPage(8)">
+            Baca sampai selesai ❤️
+        </button>
+    </div>
+
+
+    <!-- HALAMAN 8 -->
+    <div id="page8" class="hidden">
+
+        <h2>💌 Dari Huda</h2>
+
+        <p>
+            Mungkin Huda nggak selalu bisa ada
+            di samping kamu.
+        </p>
+
+        <p>
+            Tapi Huda selalu pengen tahu
+            kamu baik-baik aja.
+        </p>
+
+        <p>
+            Kalau hari ini berat,
+            <b>istirahat ya.</b>
+        </p>
+
+        <p>
+            Kalau hari ini menyenangkan,
+            <b>Huda ikut senang.</b>
+        </p>
+
+        <p>
+            Kalau kamu lagi sedih,
+            <b>cerita aja.</b>
+        </p>
+
+        <p>
+            Dan kalau kamu lagi kangen...
+        </p>
+
+        <h2>
+            bilang Huda. ❤️
+        </h2>
+
+        <p>
+            Karena mungkin,
+            diam-diam Huda juga
+            lagi kangen kamu.
+        </p>
+
+        <p class="signature">
+            — Huda ❤️
+        </p>
+
+        <button onclick="peluk()">
+            Peluk virtual dulu 🤗
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+let halamanSekarang = 1;
+
+function nextPage(nomor) {
+
+    document.getElementById("page" + halamanSekarang)
+        .classList.add("hidden");
+
+    document.getElementById("page" + nomor)
+        .classList.remove("hidden");
+
+    halamanSekarang = nomor;
+
+    window.scrollTo(0,0);
+
+    buatHati(5);
+}
+
+
+function jawab(nomor) {
+
+    document.getElementById("page" + halamanSekarang)
+        .classList.add("hidden");
+
+    document.getElementById("page" + nomor)
+        .classList.remove("hidden");
+
+    halamanSekarang = nomor;
+
+    buatHati(3);
+}
+
+
+function buatHati(jumlah = 5) {
+
+    for(let i = 0; i < jumlah; i++) {
+
+        setTimeout(() => {
+
+            const heart = document.createElement("div");
+
+            heart.className = "heart";
+
+            const simbol = ["❤️","💗","💕","💖","💘"];
+
+            heart.innerHTML =
+                simbol[Math.floor(Math.random() * simbol.length)];
+
+            heart.style.left =
+                Math.random() * 100 + "vw";
+
+            heart.style.animationDuration =
+                (3 + Math.random() * 3) + "s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+
+        }, i * 200);
+    }
+}
+
+
+function peluk() {
+
+    buatHati(25);
+
+    setTimeout(() => {
+
+        alert(
+            "🤗 Sini peluk dulu...\n\n" +
+            "Makasih udah baca sampai akhir.\n\n" +
+            "— Dari Huda ❤️"
+        );
+
+    }, 700);
+
+}
+
+</script>
+
+</body>
+</html>
