@@ -1,286 +1,494 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dari Huda ❤️</title>
 
-    <title>Kalkulator Karya Mas Huda</title>
+<style>
+* {
+    box-sizing: border-box;
+}
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffe6ef, #fff5f8, #ffeef4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: #4a3038;
+}
 
-        body {
-            margin: 0;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #f2f2f2;
-            font-family: Arial, sans-serif;
-        }
+.card {
+    width: 90%;
+    max-width: 420px;
+    background: rgba(255,255,255,0.94);
+    border-radius: 28px;
+    padding: 28px 22px;
+    text-align: center;
+    box-shadow: 0 15px 45px rgba(180, 80, 110, 0.18);
+    position: relative;
+    z-index: 2;
+    animation: muncul .7s ease;
+}
 
-        .calculator {
-            width: 330px;
-            padding: 20px;
-            border-radius: 30px;
-            background: #1c1c1c;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
+h1 {
+    color: #d94f78;
+    margin-bottom: 10px;
+}
 
-        .brand {
-            text-align: center;
-            color: white;
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
+h2 {
+    color: #d94f78;
+    font-size: 23px;
+}
 
-        .display {
-            width: 100%;
-            height: 100px;
-            background: #000;
-            color: white;
-            border-radius: 18px;
-            margin-bottom: 15px;
-            padding: 20px;
-            text-align: right;
-            font-size: 40px;
-            overflow: hidden;
-        }
+p {
+    line-height: 1.7;
+    font-size: 16px;
+}
 
-        .buttons {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-        }
+.small {
+    font-size: 13px;
+    color: #9a737d;
+}
 
-        button {
-            height: 60px;
-            border: none;
-            border-radius: 50%;
-            font-size: 22px;
-            cursor: pointer;
-            transition: 0.1s;
-        }
+button {
+    width: 100%;
+    border: none;
+    border-radius: 18px;
+    padding: 14px;
+    margin-top: 11px;
+    background: #f783a5;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .25s;
+}
 
-        button:active {
-            transform: scale(0.9);
-        }
+button:hover {
+    transform: scale(1.03);
+}
 
-        .number {
-            background: #333;
-            color: white;
-        }
+button:active {
+    transform: scale(.97);
+}
 
-        .operator {
-            background: #ff9500;
-            color: white;
-        }
+.secondary {
+    background: #ffe0e9;
+    color: #c94c72;
+}
 
-        .special {
-            background: #a5a5a5;
-            color: black;
-        }
+.hidden {
+    display: none;
+}
 
-        .zero {
-            grid-column: span 2;
-            border-radius: 35px;
-        }
+.heart {
+    position: fixed;
+    bottom: -30px;
+    font-size: 22px;
+    animation: naik 5s linear forwards;
+    z-index: 1;
+    pointer-events: none;
+}
 
-        .footer {
-            color: #aaa;
-            text-align: center;
-            margin-top: 18px;
-            font-size: 13px;
-        }
-    </style>
+@keyframes naik {
+    from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes muncul {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.progress {
+    height: 7px;
+    background: #f8dce5;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #ed7196;
+    transition: .5s;
+}
+
+.signature {
+    margin-top: 25px;
+    font-weight: bold;
+    color: #d94f78;
+}
+
+.big-heart {
+    font-size: 65px;
+    animation: denyut 1s infinite;
+}
+
+@keyframes denyut {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+</style>
 </head>
 
 <body>
 
-    <div class="calculator">
+<div class="card">
 
-        <div class="brand">
-            KALKULATOR KARYA MAS HUDA
-        </div>
+    <!-- HALAMAN 1 -->
+    <div id="page1">
+        <div class="big-heart">❤️</div>
 
-        <div class="display" id="display">
-            0
-        </div>
+        <h1>Hai kamu...</h1>
 
-        <div class="buttons">
+        <p>
+            Sebentar boleh?
+            <br>
+            <b>Huda mau nanya sesuatu.</b>
+        </p>
 
-            <!-- Baris 1 -->
-            <button class="special" onclick="clearDisplay()">AC</button>
-            <button class="special" onclick="hapus()">⌫</button>
-            <button class="special" onclick="persen()">%</button>
-            <button class="operator" onclick="inputOperator('/')">÷</button>
+        <p class="small">
+            Tenang, cuma sebentar kok... 🤭
+        </p>
 
-            <!-- Baris 2 -->
-            <button class="number" onclick="inputAngka('7')">7</button>
-            <button class="number" onclick="inputAngka('8')">8</button>
-            <button class="number" onclick="inputAngka('9')">9</button>
-            <button class="operator" onclick="inputOperator('*')">×</button>
-
-            <!-- Baris 3 -->
-            <button class="number" onclick="inputAngka('4')">4</button>
-            <button class="number" onclick="inputAngka('5')">5</button>
-            <button class="number" onclick="inputAngka('6')">6</button>
-            <button class="operator" onclick="inputOperator('-')">−</button>
-
-            <!-- Baris 4 -->
-            <button class="number" onclick="inputAngka('1')">1</button>
-            <button class="number" onclick="inputAngka('2')">2</button>
-            <button class="number" onclick="inputAngka('3')">3</button>
-            <button class="operator" onclick="inputOperator('+')">+</button>
-
-            <!-- Baris 5 -->
-            <button class="number zero" onclick="inputAngka('0')">0</button>
-            <button class="number" onclick="inputAngka('.')">.</button>
-            <button class="operator" onclick="hitung()">=</button>
-
-        </div>
-
-        <div class="footer">
-            Dibuat dengan ❤️ oleh Mas Huda
-        </div>
-
+        <button onclick="nextPage(2)">
+            Mulai ❤️
+        </button>
     </div>
 
 
-    <script>
+    <!-- HALAMAN 2 -->
+    <div id="page2" class="hidden">
 
-        let angkaPertama = "";
-        let operator = "";
-        let angkaKedua = "";
-        let sedangMenghitung = false;
+        <div class="progress">
+            <div class="progress-bar" id="bar"></div>
+        </div>
 
-        const display = document.getElementById("display");
+        <h2>🌤️ Hari ini gimana?</h2>
 
+        <p>
+            Kuliahnya hari ini gimana?
+        </p>
 
-        // Memasukkan angka
-        function inputAngka(angka) {
+        <button onclick="jawab(3)">
+            😊 Seru banget
+        </button>
 
-            if (sedangMenghitung) {
-                display.innerText = "";
-                sedangMenghitung = false;
-            }
+        <button onclick="jawab(3)">
+            😐 Biasa aja
+        </button>
 
-            // Mencegah titik lebih dari satu
-            if (angka === "." && display.innerText.includes(".")) {
-                return;
-            }
+        <button onclick="jawab(3)">
+            😮‍💨 Lumayan melelahkan
+        </button>
 
-            // Mengganti angka 0
-            if (display.innerText === "0" && angka !== ".") {
-                display.innerText = angka;
-            } else {
-                display.innerText += angka;
-            }
-        }
-
-
-        // Memilih operator
-        function inputOperator(op) {
-
-            angkaPertama = display.innerText;
-            operator = op;
-
-            sedangMenghitung = true;
-        }
+        <button onclick="jawab(3)">
+            🥺 Capek banget
+        </button>
+    </div>
 
 
-        // Menghitung hasil
-        function hitung() {
+    <!-- HALAMAN 3 -->
+    <div id="page3" class="hidden">
 
-            if (angkaPertama === "" || operator === "") {
-                return;
-            }
+        <div class="progress">
+            <div class="progress-bar" style="width:40%"></div>
+        </div>
 
-            angkaKedua = display.innerText;
+        <h2>🍚 Terus...</h2>
 
-            let a = parseFloat(angkaPertama);
-            let b = parseFloat(angkaKedua);
+        <p>
+            Kamu hari ini udah makan belum?
+        </p>
 
-            let hasil;
+        <button onclick="jawab(4)">
+            🍚 Udah
+        </button>
 
+        <button onclick="jawab(4)">
+            😭 Belum
+        </button>
 
-            if (operator === "+") {
-                hasil = a + b;
-            }
-
-            else if (operator === "-") {
-                hasil = a - b;
-            }
-
-            else if (operator === "*") {
-                hasil = a * b;
-            }
-
-            else if (operator === "/") {
-
-                if (b === 0) {
-                    display.innerText = "Error";
-                    return;
-                }
-
-                hasil = a / b;
-            }
+        <button onclick="jawab(4)">
+            🤭 Belum sempat
+        </button>
+    </div>
 
 
-            // Membatasi angka desimal terlalu panjang
-            hasil = Math.round(hasil * 100000000) / 100000000;
+    <!-- HALAMAN 4 -->
+    <div id="page4" class="hidden">
 
-            display.innerText = hasil;
+        <div class="progress">
+            <div class="progress-bar" style="width:60%"></div>
+        </div>
 
-            angkaPertama = "";
-            angkaKedua = "";
-            operator = "";
+        <h2>🫶 Huda cuma mau bilang...</h2>
 
-            sedangMenghitung = true;
-        }
+        <p>
+            Kalau hari ini terasa berat,
+            jangan terlalu keras sama diri sendiri ya.
+        </p>
 
+        <p>
+            Kamu boleh capek.
+            <br>
+            Kamu boleh istirahat.
+            <br>
+            Dan kalau mau cerita...
+            <br>
+            <b>Huda dengerin.</b> ❤️
+        </p>
 
-        // Menghapus semua
-        function clearDisplay() {
-
-            display.innerText = "0";
-
-            angkaPertama = "";
-            angkaKedua = "";
-            operator = "";
-
-            sedangMenghitung = false;
-        }
-
-
-        // Menghapus satu angka
-        function hapus() {
-
-            if (display.innerText.length > 1) {
-
-                display.innerText =
-                    display.innerText.slice(0, -1);
-
-            } else {
-
-                display.innerText = "0";
-
-            }
-        }
+        <button onclick="nextPage(5)">
+            Lanjut 🤍
+        </button>
+    </div>
 
 
-        // Persen
-        function persen() {
+    <!-- HALAMAN 5 -->
+    <div id="page5" class="hidden">
 
-            let angka = parseFloat(display.innerText);
+        <div class="progress">
+            <div class="progress-bar" style="width:75%"></div>
+        </div>
 
-            display.innerText = angka / 100;
-        }
+        <h2>💭 Oh iya...</h2>
 
-    </script>
+        <p>
+            Ada satu hal lagi yang mau Huda bilang.
+        </p>
+
+        <p>
+            Kalau suatu hari kamu kangen Huda...
+        </p>
+
+        <h2>
+            bilang ya. 🥺
+        </h2>
+
+        <p>
+            Jangan dipendem sendiri.
+            <br>
+            Jangan pura-pura nggak kangen.
+        </p>
+
+        <button onclick="nextPage(6)">
+            Kalau kangen bilang ❤️
+        </button>
+    </div>
+
+
+    <!-- HALAMAN 6 -->
+    <div id="page6" class="hidden">
+
+        <div class="progress">
+            <div class="progress-bar" style="width:90%"></div>
+        </div>
+
+        <h2>🤍 Janji?</h2>
+
+        <p>
+            Kalau kangen...
+            <br>
+            bilang Huda ya?
+        </p>
+
+        <button onclick="nextPage(7)">
+            Janji 🤞
+        </button>
+
+        <button class="secondary" onclick="nextPage(7)">
+            Iya deh 🥺
+        </button>
+    </div>
+
+
+    <!-- HALAMAN 7 -->
+    <div id="page7" class="hidden">
+
+        <div class="big-heart">💗</div>
+
+        <h2>Sebenarnya...</h2>
+
+        <p>
+            Huda nggak punya pertanyaan lagi.
+        </p>
+
+        <p>
+            Huda cuma mau bilang sesuatu.
+        </p>
+
+        <p>
+            Makasih ya...
+            <br>
+            udah hadir di hari-hari Huda.
+        </p>
+
+        <button onclick="nextPage(8)">
+            Baca sampai selesai ❤️
+        </button>
+    </div>
+
+
+    <!-- HALAMAN 8 -->
+    <div id="page8" class="hidden">
+
+        <h2>💌 Dari Huda</h2>
+
+        <p>
+            Mungkin Huda nggak selalu bisa ada
+            di samping kamu.
+        </p>
+
+        <p>
+            Tapi Huda selalu pengen tahu
+            kamu baik-baik aja.
+        </p>
+
+        <p>
+            Kalau hari ini berat,
+            <b>istirahat ya.</b>
+        </p>
+
+        <p>
+            Kalau hari ini menyenangkan,
+            <b>Huda ikut senang.</b>
+        </p>
+
+        <p>
+            Kalau kamu lagi sedih,
+            <b>cerita aja.</b>
+        </p>
+
+        <p>
+            Dan kalau kamu lagi kangen...
+        </p>
+
+        <h2>
+            bilang Huda. ❤️
+        </h2>
+
+        <p>
+            Karena mungkin,
+            diam-diam Huda juga
+            lagi kangen kamu.
+        </p>
+
+        <p class="signature">
+            — Huda ❤️
+        </p>
+
+        <button onclick="peluk()">
+            Peluk virtual dulu 🤗
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+let halamanSekarang = 1;
+
+function nextPage(nomor) {
+
+    document.getElementById("page" + halamanSekarang)
+        .classList.add("hidden");
+
+    document.getElementById("page" + nomor)
+        .classList.remove("hidden");
+
+    halamanSekarang = nomor;
+
+    window.scrollTo(0,0);
+
+    buatHati(5);
+}
+
+
+function jawab(nomor) {
+
+    document.getElementById("page" + halamanSekarang)
+        .classList.add("hidden");
+
+    document.getElementById("page" + nomor)
+        .classList.remove("hidden");
+
+    halamanSekarang = nomor;
+
+    buatHati(3);
+}
+
+
+function buatHati(jumlah = 5) {
+
+    for(let i = 0; i < jumlah; i++) {
+
+        setTimeout(() => {
+
+            const heart = document.createElement("div");
+
+            heart.className = "heart";
+
+            const simbol = ["❤️","💗","💕","💖","💘"];
+
+            heart.innerHTML =
+                simbol[Math.floor(Math.random() * simbol.length)];
+
+            heart.style.left =
+                Math.random() * 100 + "vw";
+
+            heart.style.animationDuration =
+                (3 + Math.random() * 3) + "s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+
+        }, i * 200);
+    }
+}
+
+
+function peluk() {
+
+    buatHati(25);
+
+    setTimeout(() => {
+
+        alert(
+            "🤗 Sini peluk dulu...\n\n" +
+            "Makasih udah baca sampai akhir.\n\n" +
+            "— Dari Huda ❤️"
+        );
+
+    }, 700);
+
+}
+
+</script>
 
 </body>
-</html>
+</html>a
