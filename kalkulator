@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kalkulator Karya Mas Huda</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+
+        .calculator {
+            width: 330px;
+            padding: 20px;
+            border-radius: 30px;
+            background: #1c1c1c;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .brand {
+            text-align: center;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .display {
+            width: 100%;
+            height: 100px;
+            background: #000;
+            color: white;
+            border-radius: 18px;
+            margin-bottom: 15px;
+            padding: 20px;
+            text-align: right;
+            font-size: 40px;
+            overflow: hidden;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        button {
+            height: 60px;
+            border: none;
+            border-radius: 50%;
+            font-size: 22px;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+
+        button:active {
+            transform: scale(0.9);
+        }
+
+        .number {
+            background: #333;
+            color: white;
+        }
+
+        .operator {
+            background: #ff9500;
+            color: white;
+        }
+
+        .special {
+            background: #a5a5a5;
+            color: black;
+        }
+
+        .zero {
+            grid-column: span 2;
+            border-radius: 35px;
+        }
+
+        .footer {
+            color: #aaa;
+            text-align: center;
+            margin-top: 18px;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="calculator">
+
+        <div class="brand">
+            KALKULATOR KARYA MAS HUDA
+        </div>
+
+        <div class="display" id="display">
+            0
+        </div>
+
+        <div class="buttons">
+
+            <!-- Baris 1 -->
+            <button class="special" onclick="clearDisplay()">AC</button>
+            <button class="special" onclick="hapus()">⌫</button>
+            <button class="special" onclick="persen()">%</button>
+            <button class="operator" onclick="inputOperator('/')">÷</button>
+
+            <!-- Baris 2 -->
+            <button class="number" onclick="inputAngka('7')">7</button>
+            <button class="number" onclick="inputAngka('8')">8</button>
+            <button class="number" onclick="inputAngka('9')">9</button>
+            <button class="operator" onclick="inputOperator('*')">×</button>
+
+            <!-- Baris 3 -->
+            <button class="number" onclick="inputAngka('4')">4</button>
+            <button class="number" onclick="inputAngka('5')">5</button>
+            <button class="number" onclick="inputAngka('6')">6</button>
+            <button class="operator" onclick="inputOperator('-')">−</button>
+
+            <!-- Baris 4 -->
+            <button class="number" onclick="inputAngka('1')">1</button>
+            <button class="number" onclick="inputAngka('2')">2</button>
+            <button class="number" onclick="inputAngka('3')">3</button>
+            <button class="operator" onclick="inputOperator('+')">+</button>
+
+            <!-- Baris 5 -->
+            <button class="number zero" onclick="inputAngka('0')">0</button>
+            <button class="number" onclick="inputAngka('.')">.</button>
+            <button class="operator" onclick="hitung()">=</button>
+
+        </div>
+
+        <div class="footer">
+            Dibuat dengan ❤️ oleh Mas Huda
+        </div>
+
+    </div>
+
+
+    <script>
+
+        let angkaPertama = "";
+        let operator = "";
+        let angkaKedua = "";
+        let sedangMenghitung = false;
+
+        const display = document.getElementById("display");
+
+
+        // Memasukkan angka
+        function inputAngka(angka) {
+
+            if (sedangMenghitung) {
+                display.innerText = "";
+                sedangMenghitung = false;
+            }
+
+            // Mencegah titik lebih dari satu
+            if (angka === "." && display.innerText.includes(".")) {
+                return;
+            }
+
+            // Mengganti angka 0
+            if (display.innerText === "0" && angka !== ".") {
+                display.innerText = angka;
+            } else {
+                display.innerText += angka;
+            }
+        }
+
+
+        // Memilih operator
+        function inputOperator(op) {
+
+            angkaPertama = display.innerText;
+            operator = op;
+
+            sedangMenghitung = true;
+        }
+
+
+        // Menghitung hasil
+        function hitung() {
+
+            if (angkaPertama === "" || operator === "") {
+                return;
+            }
+
+            angkaKedua = display.innerText;
+
+            let a = parseFloat(angkaPertama);
+            let b = parseFloat(angkaKedua);
+
+            let hasil;
+
+
+            if (operator === "+") {
+                hasil = a + b;
+            }
+
+            else if (operator === "-") {
+                hasil = a - b;
+            }
+
+            else if (operator === "*") {
+                hasil = a * b;
+            }
+
+            else if (operator === "/") {
+
+                if (b === 0) {
+                    display.innerText = "Error";
+                    return;
+                }
+
+                hasil = a / b;
+            }
+
+
+            // Membatasi angka desimal terlalu panjang
+            hasil = Math.round(hasil * 100000000) / 100000000;
+
+            display.innerText = hasil;
+
+            angkaPertama = "";
+            angkaKedua = "";
+            operator = "";
+
+            sedangMenghitung = true;
+        }
+
+
+        // Menghapus semua
+        function clearDisplay() {
+
+            display.innerText = "0";
+
+            angkaPertama = "";
+            angkaKedua = "";
+            operator = "";
+
+            sedangMenghitung = false;
+        }
+
+
+        // Menghapus satu angka
+        function hapus() {
+
+            if (display.innerText.length > 1) {
+
+                display.innerText =
+                    display.innerText.slice(0, -1);
+
+            } else {
+
+                display.innerText = "0";
+
+            }
+        }
+
+
+        // Persen
+        function persen() {
+
+            let angka = parseFloat(display.innerText);
+
+            display.innerText = angka / 100;
+        }
+
+    </script>
+
+</body>
+</html>
